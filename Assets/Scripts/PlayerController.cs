@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 		direction = 1;
+		spriteRenderer.flipX = true;
 	}
 
     // Update is called once per frame

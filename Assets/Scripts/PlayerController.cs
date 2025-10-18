@@ -7,13 +7,16 @@ public class PlayerController : MonoBehaviour
 	public float jumpForce;
 	public Rigidbody2D rigidbody;
 	public BoxCollider2D collider;
+	public Bullet bulletPrefab;
 	public LayerMask floorLayerMask;
+
+	private int direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
+		direction = 1;
+	}
 
     // Update is called once per frame
     void Update()
@@ -21,8 +24,10 @@ public class PlayerController : MonoBehaviour
 
 		if (Keyboard.current.dKey.isPressed) {
 			rigidbody.linearVelocityX = speed;
+			direction = 1;
 		} else if (Keyboard.current.aKey.isPressed) {
 			rigidbody.linearVelocityX = -speed;
+			direction = -1;
 		} else {
 			rigidbody.linearVelocityX = 0;
 		}
@@ -46,6 +51,11 @@ public class PlayerController : MonoBehaviour
 			if (Keyboard.current.spaceKey.wasPressedThisFrame) {
 				rigidbody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 			}
+		}
+
+		if (Keyboard.current.iKey.wasPressedThisFrame) {
+			var bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
+			bullet.direction = direction;
 		}
 	}
 }

@@ -848,6 +848,7 @@ MonoBehaviour:
   jumpForce: 7
   rigidbody: {fileID: 1595028820}
   collider: {fileID: 1595028819}
+  bulletPrefab: {fileID: 9177684948173693042, guid: 68ccd455bb90cd24ca0eca06a8e3c863, type: 3}
   floorLayerMask:
     serializedVersion: 2
     m_Bits: 55
